@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title-gradient {
+  background: linear-gradient(90deg, rgba(28, 124, 180, 1) 0%, rgba(103, 195, 217, 1) 25%, rgba(80, 186, 212, 1) 50%, rgba(249, 102, 17, 1) 75%, rgba(249, 164, 14, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+}
