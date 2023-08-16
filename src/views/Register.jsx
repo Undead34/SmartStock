@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { AiFillEye } from "react-icons/ai"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import { FaUserPen } from "react-icons/fa6"
 import { MdEmail } from "react-icons/md"
 
@@ -12,6 +12,8 @@ import { MdEmail } from "react-icons/md"
  */
 export default function Register() {
   const [error, setError] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showRePassword, setShowRePassword] = useState(false)
 
   useEffect(() => {
     const unsubscribe = window.SmartStock.receive("smartstock:register:user", (event, data) => {
@@ -88,13 +90,13 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                  <input className="bg-transparent outline-none flex-1" name="password" type="password" placeholder="Por razones de seguridad, elija una contraseña" />
-                  <AiFillEye className="text-[#f96611] cursor-pointer" />
+                  <input className="bg-transparent outline-none flex-1" name="password" type={!showPassword ? "password" : "text"} placeholder="Por razones de seguridad, elija una contraseña" />
+                  {showPassword ? <AiFillEyeInvisible onClick={() => { setShowPassword(!showPassword) }} className="text-[#f96611] cursor-pointer" /> : <AiFillEye onClick={() => { setShowPassword(!showPassword) }} className="text-[#f96611] cursor-pointer" />}
                 </div>
 
                 <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                  <input className="bg-transparent outline-none flex-1" name="repassword" type="password" placeholder="Confirme su contraseña ingresándola nuevamente" />
-                  <AiFillEye className="text-[#f96611] cursor-pointer" />
+                  <input className="bg-transparent outline-none flex-1" name="repassword" type={!showRePassword ? "password" : "text"} placeholder="Confirme su contraseña ingresándola nuevamente" />
+                  {showRePassword ? <AiFillEyeInvisible onClick={() => { setShowRePassword(!showRePassword) }} className="text-[#f96611] cursor-pointer" /> : <AiFillEye onClick={() => { setShowRePassword(!showRePassword) }} className="text-[#f96611] cursor-pointer" />}
                 </div>
               </div>
 

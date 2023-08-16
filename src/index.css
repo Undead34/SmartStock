@@ -10,6 +10,7 @@ body {
 
 * {
   box-sizing: border-box;
+  -webkit-user-drag: none;
 }
 
 #root {
@@ -22,7 +23,7 @@ body {
 
 .title-gradient {
   background: linear-gradient(90deg, rgba(28, 124, 180, 1) 0%, rgba(103, 195, 217, 1) 25%, rgba(80, 186, 212, 1) 50%, rgba(249, 102, 17, 1) 75%, rgba(249, 164, 14, 1) 100%);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -30,4 +31,46 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+
+::-webkit-scrollbar-track {
+  background: #f96611;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #f96611;
+}
+
+::-webkit-scrollbar-track:active {
+  background: #ee610f;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

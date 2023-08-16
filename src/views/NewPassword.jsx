@@ -1,15 +1,49 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
-import { AiFillEye } from "react-icons/ai"
-import { MdEmail } from "react-icons/md"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 
 export default function NewPassword() {
   const [error, setError] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showRePassword, setShowRePassword] = useState(false)
+  const navigate = useNavigate()
 
-  function handlerSubmit(event) {
+  async function handlerSubmit(event) {
     event.preventDefault()
 
+    const password = event.target.password.value;
+    const repassword = event.target.repassword.value;
+
+    // Validaciones básicas
+    if (!password || !repassword) {
+      setError("Todos los campos son obligatorios");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres")
+      return;
+    }
+
+    if (password !== repassword) {
+      setError("Las contraseñas no coinciden")
+      return;
+    }
+
+    
+    const response = await window.SmartStock.invoke("smartstock:change:password", {
+      id: new URLSearchParams(location.hash.split("new-password").at(-1)).get("id"),
+      password,
+    });
+    
+    if (!response.ERROR) {
+      setError("¡Todo listo!")
+      navigate("/")
+    } else {
+      console.log(response, new URLSearchParams(location.hash.split("new-password").at(-1)).get("id"))
+      setError("¡Oops, se ha producido un error al cambiar su contraseña.!")
+    }
   }
 
   return (
@@ -31,23 +65,18 @@ export default function NewPassword() {
             <form className="flex flex-col" onSubmit={handlerSubmit}>
               <div className="flex flex-col gap-6 mb-4 text-[#1c7cb4]">
                 <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                  <input className="bg-transparent outline-none flex-1" name="email" type="email" placeholder="Introduzca su dirección de correo electrónico" />
-                  <MdEmail className="text-[#f96611]" />
+                  <input className="bg-transparent outline-none flex-1" name="password" type={!showPassword ? "password" : "text"} placeholder="Elija una nueva contraseña" />
+                  {showPassword ? <AiFillEyeInvisible onClick={() => { setShowPassword(!showPassword) }} className="text-[#f96611] cursor-pointer" /> : <AiFillEye onClick={() => { setShowPassword(!showPassword) }} className="text-[#f96611] cursor-pointer" />}
                 </div>
 
                 <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                  <input className="bg-transparent outline-none flex-1" name="password" type="password" placeholder="Por razones de seguridad, elija una contraseña" />
-                  <AiFillEye className="text-[#f96611] cursor-pointer" />
-                </div>
-
-                <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                  <input className="bg-transparent outline-none flex-1" name="repassword" type="password" placeholder="Confirme su contraseña ingresándola nuevamente" />
-                  <AiFillEye className="text-[#f96611] cursor-pointer" />
+                  <input className="bg-transparent outline-none flex-1" name="repassword" type={!showRePassword ? "password" : "text"} placeholder="Confirme su contraseña ingresándola nuevamente" />
+                  {showRePassword ? <AiFillEyeInvisible onClick={() => { setShowRePassword(!showRePassword) }} className="text-[#f96611] cursor-pointer" /> : <AiFillEye onClick={() => { setShowRePassword(!showRePassword) }} className="text-[#f96611] cursor-pointer" />}
                 </div>
               </div>
 
               <div className="flex items-center justify-center mb-2">
-                <button className="flex-1 bg-[#f96611] text-xl rounded-md p-2">Registrarse</button>
+                <button className="flex-1 bg-[#f96611] text-xl rounded-md p-2">Cambiar la contraseña</button>
               </div>
             </form>
           </div>

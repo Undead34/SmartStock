@@ -26,6 +26,19 @@ class Database {
     });
   }
 
+  // change password by ID funcition
+  async changePasswordByID(password, id) {
+    const sql = 'UPDATE Users SET Password = ? WHERE Id = ?';
+    try {
+      const connection = await this.connect();
+      const result = await this.query(sql, [password, id]);
+      this.disconnect(connection);
+      return result;
+    } catch {
+      throw error;
+    }
+  }
+
   async disconnect(connection) {
     connection.release();
     console.log('Disconnected from database!');

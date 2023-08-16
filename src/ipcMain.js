@@ -175,7 +175,7 @@ class IpcMain {
             if (result.length !== 0) {
               if (result[0].TempLoginCodes === data.code) {
                 this.db.saveTempLoginCode(result[0].ID, null)
-                return { ERROR: null, CODE: "OK" }
+                return { ERROR: null, CODE: "OK", id: result[0].ID }
               } else {
                 return { ERROR: "the code is not match", CODE: "INVALID_CODE" }
               }
@@ -197,6 +197,39 @@ class IpcMain {
         once: false,
         action: async (event, data) => {
           shell.openExternal(data)
+        }
+      },
+      {
+        name: "smartstock:change:password",
+        handle: true,
+        once: false,
+        action: async (event, data) => {
+          try {
+            const salt = crypto.randomBytes(16).toString('hex');
+            const derivedKey = crypto.pbkdf2Sync(data.password, salt, 100000, 64, "sha512").toString('hex');
+
+            const password = `${salt}:${derivedKey}`
+            const result = await this.db.changePasswordByID(password, data.id)
+
+            
+            if (result.affectedRows === 0) {
+              return {
+                ERROR: "The user is not registered",
+                CODE: "NO_EXISTS"
+              }
+            }
+
+            return {
+              ERROR: null,
+              CODE: "OK"
+            }
+          } catch (error) {
+            console.log(error)
+            return {
+              ERROR: "Unknown error try again",
+              CODE: "ERROR_UNKNOWN"
+            }
+          }
         }
       }
     ];

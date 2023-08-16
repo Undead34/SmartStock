@@ -22,7 +22,7 @@ const API = {
   },
 
   async invoke(channel, ...args) {
-    const channels = ["smartstock:login:token", "smartstock:validate:code"];
+    const channels = ["smartstock:login:token", "smartstock:validate:code", "smartstock:change:password"];
 
     if (typeof channel === "string" && channels.includes(channel)) {
       return await ipcRenderer.invoke(channel, ...args);

@@ -50,7 +50,7 @@ export default function Login() {
 
       switch (response.CODE) {
         case "OK":
-          navigate("/new-password")
+          navigate(`/new-password?id=${response.id}`)
           break;
         case "INVALID_CODE":
           setError("Código no válido")
