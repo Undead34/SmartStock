@@ -9,6 +9,7 @@ En esta parte, se están importando algunas bibliotecas necesarias para trabajar
 */
 import { HashRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import { Toaster } from "sonner"
 import * as React from "react";
 //#endregion
 
@@ -50,6 +51,7 @@ De esta manera, la aplicación se muestra en el sitio web.
 function render() {
   ReactDOM.createRoot(document.getElementById("root")).render(
     <HashRouter>
+      <Toaster richColors />
       <App />
     </HashRouter>
   )

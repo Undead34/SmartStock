@@ -74,7 +74,8 @@ class IpcMain {
                   event.sender.send("smartstock:login:user", {
                     ERROR: null,
                     CODE: "LOGIN_SUCCESS",
-                    TOKEN: token
+                    TOKEN: token,
+                    ID: existingUser[0].ID
                   });
                 } else {
                   event.sender.send("smartstock:login:user", {

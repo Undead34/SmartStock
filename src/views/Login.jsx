@@ -20,6 +20,8 @@ export default function Login() {
           break;
         case "LOGIN_SUCCESS":
           localStorage.setItem("TOKEN", data.TOKEN)
+          localStorage.setItem("ID", data.ID)
+          console.log(data)
           setError(null)
           navigate("/")
           break;

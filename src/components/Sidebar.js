@@ -1,6 +1,8 @@
-import { AiOutlineCheckCircle, AiOutlineFieldTime } from "react-icons/ai"
-import { AiOutlineUser, AiOutlineShop } from "react-icons/ai"
+import { BiNotepad } from "react-icons/bi"
+import { LuCalendarClock } from "react-icons/lu"
 import { LiaBarsSolid } from "react-icons/lia"
+import { AiOutlineShop } from "react-icons/ai"
+import { FiUsers } from "react-icons/fi"
 import { Link } from "react-router-dom";
 import React from "react"
 
@@ -21,9 +23,9 @@ function Sidebar() {
       </div>
 
       <SidebarItem to="/app" text="Stock" icon={<AiOutlineShop />} />
-      <SidebarItem to="orders" text="Pedidos" icon={<AiOutlineCheckCircle />} />
-      <SidebarItem to="customers" text="Clientes" icon={<AiOutlineUser />} />
-      <SidebarItem to="catalog" text="Catálogo Online" icon={<AiOutlineCheckCircle />} />
+      <SidebarItem to="orders" text="Notas de entrega" icon={<BiNotepad />} />
+      <SidebarItem to="control" text="Control y seguimiento" icon={<LuCalendarClock />} />
+      <SidebarItem to="customers" text="Clientes" icon={<FiUsers />} />
     </div>
   )
 }
