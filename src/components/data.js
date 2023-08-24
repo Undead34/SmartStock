@@ -1,210 +1,35 @@
+import { v4 as uuid } from "uuid";
+
 export const info = [
   {
-    id: "0",
-    equipment_name: "Laptop Dell 11th Gen Core i7-1165G7",
-    equipment_type: "Laptop",
-    serial_number: "H0RHJL3",
-    model: "Latitude 3420",
-    code: "LPD01",
-    entry_date: new Date(2023, 8, 8),
-    observation: "Dell Latitude 14 3420 | 11th Gen Core i7-1165G7 | 8 GB | 256GB SSD | Intel Integrated Graphics | 14' HD Non-Touch | Win 11 Pro",
-    location: "Venezuela",
-    stock: 35
-
+    "id": "36064933-13f1-460f-8d81-8392857969b1",
+    "equipment_name": "Tecno Pova 4",
+    "equipment_type": "Smartphone",
+    "serial_number": "GL-200719",
+    "model": "Pova 4",
+    "code": "B0D8EE8E",
+    "entry_date": "2023-08-23T04:00:00.000Z",
+    "observation": "Android 12, Helio G99, Front 8M, Back 50M Dual Camera, RAM 8 GB + 5 GB ampliables, ROM 128.00 GB, Batería 6000mAh, Pantalla 720x1640.El dispositivo esta usado pero el estado es bueno y ya fue verificado.",
+    "location": "Venezuela",
+    "stock": 1
   },
   {
-    id: "1",
-    equipment_name: "HP Spectre x360 13",
-    equipment_type: "Laptop",
-    serial_number: "F8T2K7",
-    model: "Spectre x360 13-aw0013dx",
-    code: "HPS01",
-    entry_date: new Date(2023, 7, 15),
-    observation: "HP Spectre x360 13 | 11th Gen Core i5 | 8 GB | 512GB SSD | Intel Iris Xe Graphics | 13.3' FHD Touch | Win 10 Home",
-    location: "United States",
-    stock: 35
-
-  },
-  {
-    id: "2",
-    equipment_name: "Apple MacBook Pro",
-    equipment_type: "Laptop",
-    serial_number: "M9E5R2",
-    model: "MacBook Pro 2023",
-    code: "APM01",
-    entry_date: new Date(2023, 6, 25),
-    observation: "Apple MacBook Pro | M1 Pro Chip | 16 GB | 1TB SSD | 14' Retina XDR | macOS Monterey",
-    location: "Canada",
-    stock: 35
-
-  },
-  {
-    id: "3",
-    equipment_name: "Dell XPS 15",
-    equipment_type: "Laptop",
-    serial_number: "G3P6S9",
-    model: "XPS 15 9570",
-    code: "LPD02",
-    entry_date: new Date(2023, 7, 10),
-    observation: "Dell XPS 15 9570 | 9th Gen Core i7-9750H | 16 GB | 512GB SSD | NVIDIA GTX 1650 | 15.6' 4K Touch | Win 10 Pro",
-    location: "Germany",
-    stock: 35
-
-  },
-  {
-    id: "4",
-    equipment_name: "Samsung Galaxy S21",
-    equipment_type: "Smartphone",
-    serial_number: "S21G6F",
-    model: "Galaxy S21",
-    code: "SMS01",
-    entry_date: new Date(2023, 7, 5),
-    observation: "Samsung Galaxy S21 | Exynos 2100 | 8 GB RAM | 128GB Storage | 6.2' AMOLED Display | Android 11",
-    location: "Spain",
-    stock: 35
-
-  },
-  {
-    id: "5",
-    equipment_name: "Canon EOS Rebel T7i",
-    equipment_type: "Camera",
-    serial_number: "CANT7I",
-    model: "EOS Rebel T7i",
-    code: "CAM01",
-    entry_date: new Date(2023, 6, 18),
-    observation: "Canon EOS Rebel T7i | 24.2MP APS-C CMOS Sensor | EF-S 18-55mm IS STM Lens | Full HD Video",
-    location: "United Kingdom",
-    stock: 35
-
-  },
-  {
-    id: "6",
-    equipment_name: "LG 4K UHD Smart TV",
-    equipment_type: "Television",
-    serial_number: "LG4KTV",
-    model: "LG UJ6300",
-    code: "TV01",
-    entry_date: new Date(2023, 8, 2),
-    observation: "LG 4K UHD Smart TV | 55' Display | WebOS Smart Platform | HDR | Dolby Vision",
-    location: "United States",
-    stock: 35
-
-  },
-  {
-    id: "7",
-    equipment_name: "Cisco Catalyst 2960X",
-    equipment_type: "Switch",
-    serial_number: "C2960X",
-    model: "Catalyst 2960X-24TS-L",
-    code: "SW01",
-    entry_date: new Date(2023, 7, 12),
-    observation: "Cisco Catalyst 2960X | 24-Port Gigabit Ethernet | 4 SFP Uplinks | LAN Base Image",
-    location: "Data Center",
-    stock: 35
-  },
-  {
-    id: "8",
-    equipment_name: "Ubiquiti UniFi Dream Machine",
-    equipment_type: "Router",
-    serial_number: "UDM-PRO",
-    model: "UniFi Dream Machine Pro",
-    code: "ROUT01",
-    entry_date: new Date(2023, 8, 1),
-    observation: "Ubiquiti UniFi Dream Machine | Quad-Core ARM Cortex-A57 CPU | 8 GB RAM | 2 TB HDD | 10G SFP+ WAN",
-    location: "Office",
-    stock: 35
-  },
-  {
-    id: "9",
-    equipment_name: "TP-Link Archer C4000",
-    equipment_type: "Router",
-    serial_number: "TPLKC4K",
-    model: "Archer C4000",
-    code: "ROUT02",
-    entry_date: new Date(2023, 6, 28),
-    observation: "TP-Link Archer C4000 | Tri-Band AC4000 | 4 Gigabit Ethernet Ports | 1 USB 3.0 Port",
-    location: "Home Network",
-    stock: 35
-
-  },
-  {
-    id: "10",
-    equipment_name: "Logitech MX Master 3",
-    equipment_type: "Mouse",
-    serial_number: "LGMX3",
-    model: "MX Master 3",
-    code: "MOUSE01",
-    entry_date: new Date(2023, 7, 20),
-    observation: "Logitech MX Master 3 | Wireless Mouse | Darkfield High-Precision Tracking | USB-C Rechargeable",
-    location: "Office",
-    stock: 35
-
-  },
-  {
-    id: "11",
-    equipment_name: "Dell UltraSharp U2719D",
-    equipment_type: "Monitor",
-    serial_number: "DLLU2719D",
-    model: "UltraSharp U2719D",
-    code: "MONITOR01",
-    entry_date: new Date(2023, 8, 5),
-    observation: "Dell UltraSharp U2719D | 27' QHD IPS Display | 2560x1440 Resolution | 60Hz Refresh Rate",
-    location: "Home Office",
-    stock: 35
-  },
-  {
-    id: "12",
-    equipment_name: "Corsair K70 RGB MK.2",
-    equipment_type: "Keyboard",
-    serial_number: "CRSK70",
-    model: "K70 RGB MK.2",
-    code: "KEYBOARD01",
-    entry_date: new Date(2023, 6, 15),
-    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
-    location: "Gaming Setup",
-    stock: 23
-  },
-  {
-    id: "13",
-    equipment_name: "Corsair K70 RGB MK.2",
-    equipment_type: "Keyboard",
-    serial_number: "CRSK70",
-    model: "K70 RGB MK.2",
-    code: "KEYBOARD01",
-    entry_date: new Date(2023, 6, 15),
-    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
-    location: "Gaming Setup",
-    stock: 100
-  },
-  {
-    id: "14",
-    equipment_name: "Corsair K70 RGB MK.2",
-    equipment_type: "Keyboard",
-    serial_number: "CRSK70",
-    model: "K70 RGB MK.2",
-    code: "KEYBOARD01",
-    entry_date: new Date(2023, 6, 15),
-    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
-    location: "Gaming Setup",
-    stock: 13
-  },
-  {
-    id: "15",
-    equipment_name: "Corsair K70 RGB MK.2",
-    equipment_type: "Keyboard",
-    serial_number: "CRSK70",
-    model: "K70 RGB MK.2",
-    code: "KEYBOARD01",
-    entry_date: new Date(2023, 6, 15),
-    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
-    location: "Gaming Setup",
-    stock: 10
-  },
+    "id": "ddafc431-bbca-42fb-952b-b96fbd4f954f",
+    "equipment_name": "Dell Latitude 3420",
+    "equipment_type": "Laptop",
+    "serial_number": "H0RHJL3",
+    "model": "Latitude 3420",
+    "code": "5DC7B75A",
+    "entry_date": "2023-08-23T04:00:00.000Z",
+    "observation": "Laptop Dell Latitude 3420\nEstado: Nueva\nRAM 8GB, Windows 11, 512 GB SSD M.2, Resolución 1366x768, Intel Core I7-1165G7 @ 2.80GHz",
+    "location": "Venezuela",
+    "stock": 1
+  }
 ]
 
 export const customers = [
   {
-    id: "0",
+    id: uuid(),
     customer_name: "Microsoft",
     customer_email: "hello@microsoft.com",
     customer_country: "United States",
@@ -212,7 +37,7 @@ export const customers = [
     observation: "Microsoft is the largest vendor of computer software in the world",
   },
   {
-    id: "1",
+    id: uuid(),
     customer_name: "Riot Games",
     customer_email: "hello@riotgames.com",
     customer_country: "United States",
@@ -220,7 +45,7 @@ export const customers = [
     observation: "Riot Games was founded in 2006 to develop, publish, and support the most player-focused games in the world",
   },
   {
-    id: "2",
+    id: uuid(),
     customer_name: "Apple Inc.",
     customer_email: "hello@apple.com",
     customer_country: "United States",
@@ -228,7 +53,7 @@ export const customers = [
     observation: "Apple is known for its innovative products, including the iPhone, iPad, and MacBook",
   },
   {
-    id: "3",
+    id: uuid(),
     customer_name: "Amazon",
     customer_email: "hello@amazon.com",
     customer_country: "United States",
@@ -236,7 +61,7 @@ export const customers = [
     observation: "Amazon started as an online bookstore and has since become one of the world's largest e-commerce and cloud computing companies",
   },
   {
-    id: "4",
+    id: uuid(),
     customer_name: "Google",
     customer_email: "hello@google.com",
     customer_country: "United States",
@@ -244,7 +69,7 @@ export const customers = [
     observation: "Google is a multinational technology company that specializes in internet-related services and products",
   },
   {
-    id: "5",
+    id: uuid(),
     customer_name: "Samsung",
     customer_email: "hello@samsung.com",
     customer_country: "South Korea",
@@ -252,7 +77,7 @@ export const customers = [
     observation: "Samsung is a leading manufacturer of consumer electronics, including smartphones, TVs, and appliances",
   },
   {
-    id: "6",
+    id: uuid(),
     customer_name: "Facebook",
     customer_email: "hello@facebook.com",
     customer_country: "United States",
@@ -260,7 +85,7 @@ export const customers = [
     observation: "Facebook is a social networking platform connecting billions of people worldwide",
   },
   {
-    id: "7",
+    id: uuid(),
     customer_name: "Toyota",
     customer_email: "hello@toyota.com",
     customer_country: "Japan",
@@ -268,7 +93,7 @@ export const customers = [
     observation: "Toyota is one of the largest automobile manufacturers, known for its reliable and innovative vehicles",
   },
   {
-    id: "8",
+    id: uuid(),
     customer_name: "Alibaba Group",
     customer_email: "hello@alibaba.com",
     customer_country: "China",
@@ -276,7 +101,7 @@ export const customers = [
     observation: "Alibaba is a conglomerate specializing in e-commerce, retail, internet, and technology",
   },
   {
-    id: "9",
+    id: uuid(),
     customer_name: "Netflix",
     customer_email: "hello@netflix.com",
     customer_country: "United States",
@@ -285,10 +110,9 @@ export const customers = [
   },
 ];
 
-// Lista de filtros y estadisticas de cosas vendidas
 export const control = [
   {
-    id: "0",
+    id: uuid(),
     equipment_name: "Corsair K70 RGB MK.2",
     equipment_type: "Keyboard",
     code: "KEYBOARD01",
@@ -300,7 +124,7 @@ export const control = [
 
 export const tracking = [
   {
-    id: "10",
+    id: uuid(),
     order_code: "654321",
     customer_name: "Microsoft",
     customer_code: "US-MS001",
@@ -308,12 +132,12 @@ export const tracking = [
     entry_date: "N/A",
     departure_date: "N/A",
     arrival_date: new Date(2023, 6, 15),
-    status: "En camino",
+    status: "En Stock",
     code: "KEYBOARD01",
     amount: 20,
   },
   {
-    id: "11",
+    id: uuid(),
     order_code: "654321",
     customer_name: "Microsoft",
     customer_code: "US-MS001",
@@ -321,14 +145,13 @@ export const tracking = [
     entry_date: new Date(2023, 6, 15),
     departure_date: "N/A",
     arrival_date: "N/A",
-    status: "En proceso de compra",
+    status: "Enviado  ",
     code: "KEYBOARD01",
     amount: 20,
   },
   {
-    id: "21",
-    customer_name: "Microsoft",
-    order_code: "654321",
+    id: uuid(),
+    supplier_name: "Microsoft",
     code: "KEYBOARD01",
     amount: 20,
     entry_date: "N/A",
@@ -339,3 +162,14 @@ export const tracking = [
     customer_code: "US-MS001",
   },
 ]
+
+
+// id: uuid(),
+// supplier_name: event.target.supplier_name.value.trim(),
+// equipment_name: event.target.equipment_name.value.trim(),
+// stock: event.target.stock.value.trim(),
+// entry_date: parseUserDate(event.target.entry_date.value),
+// arrival_date: event.target.arrival_date.value.trim(),
+// code: custom.value,
+// status: event.target.status.value.trim(),
+// observation: event.target.observation.value.trim(),

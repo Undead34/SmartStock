@@ -16,7 +16,7 @@
     "stock"
   ],
   "author": {
-    "name": "Sinaí Rojas y Luis Salazar"
+    "name": "Trina Rojas y Luis Salazar"
   },
   "license": "MIT",
   "devDependencies": {
@@ -60,6 +60,7 @@
     "react-router": "^6.14.2",
     "react-router-dom": "^6.14.2",
     "react-select": "^5.7.4",
-    "sonner": "^0.6.2"
+    "sonner": "^0.6.2",
+    "uuid": "^9.0.0"
   }
 }

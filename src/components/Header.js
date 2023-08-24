@@ -2,9 +2,17 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { BsChevronDown } from "react-icons/bs"
 
-export default function Header({ title, username, email }) {
-  const [dropdown, setDropdown] = useState(false)
-  const navigate = useNavigate()
+export default function Header({ title }) {
+  const [dropdown, setDropdown] = useState(false);
+  const [user, setUser] = useState({ FullName: "", Email: "" });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const response = window.SmartStock.invoke("smartstock:get:userinfo", { id: localStorage.getItem("ID") });
+    response.then((data) => {
+      setUser(data)
+    });
+  }, [])
 
   useEffect(() => {
     const close = (e) => {
@@ -28,8 +36,8 @@ export default function Header({ title, username, email }) {
       <div className="relative flex flex-col ml-auto rounded-md  p-2 text-gray-700">
         <div className="flex gap-2">
           <div className="flex flex-col">
-            <p className="font-semibold text-sm">{username}</p>
-            <p className="text-xs">{email}</p>
+            <p className="font-semibold text-sm">{user.FullName}</p>
+            <p className="text-xs">{user.Email}</p>
           </div>
           <div onClick={() => setDropdown(!dropdown)} className={`flex noexit justify-center items-center cursor-pointer transition-all ${dropdown ? "-rotate-0" : "rotate-180"}`}>
             <BsChevronDown className="noexit" />

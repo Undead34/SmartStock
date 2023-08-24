@@ -17,19 +17,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
--- Tabla: Equipment
-CREATE TABLE Equipment (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Equipment_Name VARCHAR(255) NOT NULL,
-    Equipment_Type VARCHAR(50) NOT NULL,
-    Serial_Number VARCHAR(50) UNIQUE NOT NULL,
-    Model VARCHAR(100),
-    Code VARCHAR(50) UNIQUE NOT NULL,
-    Entry_Date DATE,
-    Observation TEXT,
-    Location VARCHAR(100)
-);
-
 -- Tabla: Users
 CREATE TABLE Users (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,34 +28,49 @@ CREATE TABLE Users (
     TempLoginCodes VARCHAR(255)
 );
 
--- Tabla: Clients
-CREATE TABLE Clients (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Client_Name VARCHAR(100) NOT NULL,
-    Country VARCHAR(100),
-    Client_Number VARCHAR(50),
-    Email VARCHAR(100),
-    Phone_Number VARCHAR(20)
+-- Tabla para almacenar la información de los equipos
+CREATE TABLE equipment (
+    id VARCHAR(36) PRIMARY KEY,
+    equipment_name VARCHAR(255),
+    equipment_type VARCHAR(255),
+    serial_number VARCHAR(255),
+    model VARCHAR(255),
+    code VARCHAR(255),
+    entry_date DATETIME,
+    observation TEXT,
+    location VARCHAR(255),
+    customer_name VARCHAR(255)
 );
 
--- Tabla: Delivery_Notes
-CREATE TABLE Delivery_Notes (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Equipment_ID INT,
-    Client_ID INT,
-    Delivery_Date DATE,
-    Delivery_Note TEXT,
-    Status VARCHAR(50),
-    FOREIGN KEY (Equipment_ID) REFERENCES Equipment(ID),
-    FOREIGN KEY (Client_ID) REFERENCES Clients(ID)
+-- Tabla para almacenar la información de los clientes
+CREATE TABLE customers (
+    id VARCHAR(36) PRIMARY KEY,
+    customer_name VARCHAR(255),
+    customer_email VARCHAR(255),
+    customer_country VARCHAR(255),
+    code VARCHAR(255),
+    observation TEXT
 );
 
--- Tabla: Purchase_Tracking
-CREATE TABLE Purchase_Tracking (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    Equipment_ID INT,
-    Purchase_Date DATE,
-    Arrival_Date DATE,
-    Status VARCHAR(50),
-    FOREIGN KEY (Equipment_ID) REFERENCES Equipment(ID)
+-- Tabla para almacenar el control de inventario
+CREATE TABLE control (
+    id VARCHAR(36) PRIMARY KEY,
+    equipment_name VARCHAR(255),
+    equipment_type VARCHAR(255),
+    code VARCHAR(255),
+    observation TEXT,
+    stock INT,
+    sold INT
+);
+
+-- Tabla para realizar el seguimiento de los equipos
+CREATE TABLE tracking (
+    id VARCHAR(36) PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    equipment_name VARCHAR(255),
+    entry_date DATETIME,
+    arrival_date DATE,
+    code VARCHAR(255),
+    status VARCHAR(255),
+    observation TEXT
 );

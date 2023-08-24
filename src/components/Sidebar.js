@@ -1,7 +1,9 @@
-import { BiNotepad } from "react-icons/bi"
+import { AiOutlineShoppingCart } from "react-icons/ai"
 import { LuCalendarClock } from "react-icons/lu"
+import { MdOutlineAssignmentInd } from "react-icons/md"
 import { LiaBarsSolid } from "react-icons/lia"
 import { AiOutlineShop } from "react-icons/ai"
+import { BiNotepad } from "react-icons/bi"
 import { FiUsers } from "react-icons/fi"
 import { Link } from "react-router-dom";
 import React from "react"
@@ -23,8 +25,9 @@ function Sidebar() {
       </div>
 
       <SidebarItem to="/app" text="Stock" icon={<AiOutlineShop />} />
-      <SidebarItem to="orders" text="Notas de entrega" icon={<BiNotepad />} />
-      <SidebarItem to="control" text="Control y seguimiento" icon={<LuCalendarClock />} />
+      <SidebarItem to="buy" text="Comprar" icon={<AiOutlineShoppingCart />} />
+      <SidebarItem to="assign" text="Asignar" icon={<MdOutlineAssignmentInd />} />
+      <SidebarItem to="control" text="Control" icon={<LuCalendarClock />} />
       <SidebarItem to="customers" text="Clientes" icon={<FiUsers />} />
     </div>
   )

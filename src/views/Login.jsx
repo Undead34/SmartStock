@@ -1,41 +1,69 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-
-import { BiSolidLock } from "react-icons/bi"
-import { MdEmail } from "react-icons/md"
-import { Link } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { BiSolidLock } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Login() {
-  const [error, setError] = useState(null)
-  const navigate = useNavigate()
+  const [logged, setLogged] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
+  // Efecto que verifica el token al cargar la página
   useEffect(() => {
-    const unsubscribe = window.SmartStock.receive("smartstock:login:user", (event, data) => {
-      switch (data.CODE) {
-        case "INVALID_PASSWORD_EMAIL":
-          setError("Correo electrónico o contraseña no válidos")
-          break;
-        case "ERROR_VERIFYING_PASSWORD":
-          setError("Se ha producido un error en el servidor al intentar verificar la contraseña")
-          break;
-        case "LOGIN_SUCCESS":
-          localStorage.setItem("TOKEN", data.TOKEN)
-          localStorage.setItem("ID", data.ID)
-          console.log(data)
-          setError(null)
-          navigate("/")
-          break;
-        default:
-          setError("¡Se ha producido un error de servidor desconocido!")
-          console.error(data.ERROR, data.CODE);
-          break;
-      }
-    })
-    return unsubscribe
-  }, [])
+    const token = localStorage.getItem("TOKEN");
+    const id = localStorage.getItem("ID");
 
-  function handlerSubmit(event) {
-    event.preventDefault()
+    if (token && id) {
+      const response = window.SmartStock.invoke("smartstock:login:token", { token, id });
+
+      response.then((valid) => {
+        if (valid) {
+          setLogged(false);
+          navigate("/");
+        } else {
+          setLogged(true);
+          localStorage.removeItem("TOKEN");
+          localStorage.removeItem("ID");
+        }
+      });
+    } else {
+      setLogged(true);
+      localStorage.removeItem("TOKEN");
+      localStorage.removeItem("ID");
+    }
+  }, []);
+
+  // Efecto para manejar eventos de login
+  useEffect(() => {
+    if (logged) {
+      const unsubscribe = window.SmartStock.receive("smartstock:login:user", (event, data) => {
+        switch (data.CODE) {
+          case "INVALID_PASSWORD_EMAIL":
+            setError("Correo electrónico o contraseña no válidos");
+            break;
+          case "ERROR_VERIFYING_PASSWORD":
+            setError("Se ha producido un error en el servidor al intentar verificar la contraseña");
+            break;
+          case "LOGIN_SUCCESS":
+            localStorage.setItem("TOKEN", data.TOKEN);
+            localStorage.setItem("ID", data.ID);
+            setError(null);
+            navigate("/");
+            break;
+          default:
+            setError("¡Se ha producido un error de servidor desconocido!");
+            console.error(data.ERROR, data.CODE);
+            break;
+        }
+      });
+      return unsubscribe;
+    }
+  }, [logged]);
+
+  // Función para manejar el envío del formulario
+  function handleSubmit(event) {
+    event.preventDefault();
     const email = event.target.email.value.trim();
     const password = event.target.password.value;
 
@@ -46,10 +74,11 @@ export default function Login() {
     }
 
     if (password.length < 6) {
-      setError("Correo electrónico o contraseña no válidos")
+      setError("Correo electrónico o contraseña no válidos");
       return;
     }
 
+    // Envío de datos al proceso principal para autenticación
     window.SmartStock.send("smartstock:login:user", { email, password });
   }
 
@@ -65,7 +94,7 @@ export default function Login() {
           </div>
 
           <div className="flex flex-col">
-            <form className="flex flex-col" onSubmit={handlerSubmit}>
+            <form className="flex flex-col" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-6 mb-4 text-[#1c7cb4]">
                 <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
                   <input className="bg-transparent outline-none flex-1" name="email" type="email" placeholder="Introduzca su email" />
@@ -89,14 +118,14 @@ export default function Login() {
       <div className="flex flex-col bg-white w-[32rem] shadow-xl rounded-lg p-2 text-center">
         <span className="text-gray-400">
           ¿Ha olvidado su contraseña? {" "}
-          <Link to={"/password-reset"} className="text-[#1c7cb4] underline">Restablecer contraseña</Link>
+          <Link to="/password-reset" className="text-[#1c7cb4] underline">Restablecer contraseña</Link>
         </span>
 
         <span className="text-gray-400">
           ¿No tiene cuenta? {" "}
-          <Link to={"/register"} className="text-[#1c7cb4] underline">Regístrese</Link>
+          <Link to="/register" className="text-[#1c7cb4] underline">Regístrese</Link>
         </span>
       </div>
-    </div >
-  )
+    </div>
+  );
 }

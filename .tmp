@@ -1,6 +1,181 @@
 
 
 
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and import them here.
+
+
+
+// { role: 'reload' },
+// { role: 'forcereload' },
+// { role: 'toggledevtools' },
+// { type: 'separator' },
+// { role: 'resetzoom' },
+// { role: 'zoomin' },
+// { role: 'zoomout' },
+// { type: 'separator' }
+
+
+// 486e31543645db71dbfcb78043519ede
+
+// curl --location --request POST "https://api.imgbb.com/1/upload?expiration=600&key=YOUR_CLIENT_API_KEY" --form "image=R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+
+
+
+
+// {
+//   label: 'Productos',
+//   submenu: [
+//     {
+//       label: 'Stock',
+//       click() {
+//         console.log('👋 productos')
+//       },
+//       accelerator: 'CmdOrCtrl+P'
+//     },
+//     { type: 'separator' },
+//     {
+//       label: 'Registro',
+//       submenu: [
+//         {
+//           label: 'Registro de productos',
+//           click() {
+//             console.log('👋 productos')
+//           },
+//           accelerator: 'CmdOrCtrl+R'
+//         },
+//         {
+//           label: 'Registro de productos en stock',
+//           click() {
+//             console.log('👋 productos en stock')
+//           },
+//           accelerator: 'CmdOrCtrl+Shift+R'
+//         },
+//         {
+//           label: 'Registro de notas de entrega',
+//           click() {
+//             console.log('👋 notas de entrega')
+//           },
+//           accelerator: 'CmdOrCtrl+N'
+//         },
+//       ]
+//     },
+//     {
+//       label: 'Edición',
+//       submenu: [
+//         {
+//           label: 'Editar productos',
+//           click() {
+//             console.log('👋 productos')
+//           },
+//           accelerator: 'CmdOrCtrl+E'
+//         },
+//         {
+//           label: 'Editar productos en stock',
+//           click() {
+//             console.log('👋 productos en stock')
+//           },
+//           accelerator: 'CmdOrCtrl+Shift+E'
+//         },
+//         {
+//           label: 'Editar notas de entrega',
+//           click() {
+//             console.log('👋 notas de entrega')
+//           },
+//           accelerator: 'CmdOrCtrl+Shift+N'
+//         },
+//       ]
+//     },
+//   ]
+// },
+// {
+//   label: 'Control y seguimiento',
+//   submenu: [
+//     {
+//       label: 'En stock',
+//       click() {
+//         console.log('👋 productos')
+//       }
+//     },
+//     {
+//       label: 'En tránsito',
+//       click() {
+//         console.log('👋 productos')
+//       }
+//     },
+//     { type: 'separator' },
+//     {
+//       label: 'Entrada de productos',
+//       click() {
+//         console.log('👋 productos')
+//       }
+//     },
+//     {
+//       label: 'Salida de productos',
+//       click() {
+//         console.log('👋 productos')
+//       }
+//     },
+//   ]
+// },
+
+
+
+
+
+
+
+    // // Conéctate a la base de datos
+    // this.db.connect();
+
+    // // Ejemplo de creación de un nuevo equipo
+    // const newEquipment = {
+    //   Equipment_Name: 'Laptop',
+    //   Equipment_Type: 'Electronics',
+    //   Serial_Number: 'ABCD1234',
+    //   Model: 'Dell Inspiron',
+    //   Code: '1234',
+    //   Entry_Date: '2023-08-02',
+    //   Observation: 'New laptop added to inventory',
+    //   Location: 'Storage Room',
+    // };
+
+    // this.db.createEquipment(newEquipment, (equipmentID) => {
+    //   console.log(`New equipment ID: ${equipmentID}`);
+    // });
+
+    // // Ejemplo de actualización de un equipo existente
+    // const equipmentIDToUpdate = 1;
+    // const updatedData = {
+    //   Equipment_Name: 'Updated Laptop',
+    //   Model: 'Dell XPS',
+    //   Location: 'Office',
+    // };
+
+    // this.db.updateEquipment(equipmentIDToUpdate, updatedData, () => {
+    //   console.log('Equipment updated successfully!');
+    // });
+
+    // // Ejemplo de eliminación de un equipo
+    // const equipmentIDToDelete = 2;
+    // this.db.deleteEquipment(equipmentIDToDelete, () => {
+    //   console.log('Equipment deleted successfully!');
+    // });
+
+    // // Desconéctate de la base de datos al finalizar las operaciones
+    // this.db.disconnect();
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -567,3 +742,488 @@
 // }
 
 // export default Sidebar
+
+
+
+
+       // {
+                //   id: "11",
+                //   order_code: "654321",
+                //   customer_name: "Microsoft",
+                //   customer_code: "US-MS001",
+                //   observation: "En camino",
+                //   entry_date: new Date(2023, 6, 15),
+                //   departure_date: "N/A",
+                //   arrival_date: "N/A",
+                //   status: "En proceso de compra",
+                //   code: "KEYBOARD01",
+                //   amount: 20,
+                // },
+
+                // const columns = [
+                //   { key: "customer_name", title: "Nombre del cliente", resize: true },
+                //   { key: "order_code", title: "Código del pedido", resize: true },
+                //   { key: "code", title: "Código del producto", resize: true },
+                //   { key: "amount", title: "Cantidad", resize: true, type: "number" },
+                //   { key: "entry_date", title: "Fecha de entrada", resize: true },
+                //   { key: "departure_date", title: "Fecha de salida", resize: true },
+                //   { key: "arrival_date", title: "Fecha de llegada", resize: true },
+                //   { key: "status", title: "Estado", resize: true },
+                //   { key: "observation", title: "Observación", resize: true },
+                // ];
+
+/*
+                    {columns.map((column) => (
+                      <Cell key={column.key}>
+                        {column.type === "number"
+                          ? <input
+                            type="number"
+                            defaultValue={row[column.key]}
+                            onBlur={(event) => {
+                              // Handle update and toast success
+                            }}
+                          />
+                          : row[column.key]}
+                      </Cell>
+                    ))}
+*/
+
+
+  // editable={editable.id === item.id && editable.element === item.customer_name}
+  // onBlur={(event) => {
+  //   setEditable(!editable);
+  //   const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+  //   handleUpdate(value, item.id, "customer_name")
+  //   toast.success("Guardado con exito!");
+  // }}
+  // onClick={() => setEditable({ id: item.id, element: item.customer_name })}
+  // title={item.customer_name}
+  // {
+  //   id: "11",
+  //   order_code: "654321",
+  //   customer_name: "Microsoft",
+  //   customer_code: "US-MS001",
+  //   observation: "En camino",
+  //   entry_date: new Date(2023, 6, 15),
+  //   departure_date: "N/A",
+  //   arrival_date: "N/A",
+  //   status: "En proceso de compra",
+  //   code: "KEYBOARD01",
+  //   amount: 20,
+  // },
+
+
+
+// const [editable, setEditable] = useState({ id: null, element: null })
+
+// let theme = getTheme()
+// theme.Table = " --data-table-library_grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, min-content) repeat(5, minmax(0, 1fr)); max-height: 406px;"
+// theme = useTheme(theme);
+
+// const data = { nodes }
+
+// return (
+//   <Table data={data} theme={theme} layout={{ custom: true }}>
+//     {(tableList) => {
+//       return (
+//         <>
+//           <Header>
+//             <HeaderRow>
+//               <HeaderCell title="Nombre del cliente" resize>Nombre del cliente</HeaderCell>
+//               <HeaderCell title="Código del pedido" resize>Código del pedido</HeaderCell>
+//               <HeaderCell title="Código del producto" resize>Código del producto</HeaderCell>
+//               <HeaderCell title="Cantidad" resize>Cantidad</HeaderCell>
+//               <HeaderCell title="Fecha de entrada" resize>Fecha de entrada</HeaderCell>
+//               <HeaderCell title="Fecha de salida" resize>Fecha de salida</HeaderCell>
+//               <HeaderCell title="Fecha de llegada" resize>Fecha de llegada</HeaderCell>
+//               <HeaderCell title="Estado" resize>Estado</HeaderCell>
+//               <HeaderCell title="Observación">Observación</HeaderCell>
+//             </HeaderRow>
+//           </Header>
+//           <Body>
+//             {tableList.map((item) => {
+//               return (
+//                 <Row className="bg-[transparent!important]" key={item.id} item={item}>
+//                   <Cell>
+//                     <EditableCell editable={editable.id === item.id && editable.element === item.customer_name}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "customer_name")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.customer_name })}
+//                       title={item.customer_name}
+//                     />
+//                   </Cell>
+//
+//                 </Row>
+//               )
+//             })}
+//           </Body>
+//         </>
+//       )
+//     }}
+//   </Table>
+// )
+
+
+
+
+/*
+  <Cell>
+//                     <EditableCell editable={editable.id === item.id && editable.element === item.order_code}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "order_code")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.order_code })}
+//                       title={item.order_code}
+//                     />
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell editable={editable.id === item.id && editable.element === item.code}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "code")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.code })}
+//                       title={item.code}
+//                     />
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell type="number" editable={editable.id === item.id && editable.element === item.amount}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "amount")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.amount })}
+//                       onInput={(event) => {
+//                         const setZero = Number(event.target.value) < 0 || isNaN(Number(event.target.value)) || !isFinite(Number(event.target.value))
+//                         if (setZero) {
+//                           event.target.value = 0
+//                         }
+//                         event.target.value = Number.parseInt(event.target.value)
+//                       }}
+//                       title={item.amount}
+//                     />
+//                   </Cell>
+//                   <Cell>
+//                     <Cell>
+//                       <EditableCell
+//                         editable={editable.id === item.id && editable.element === item.entry_date}
+//                         title={!isNaN(new Date(item.entry_date)) ? new Date(item.entry_date).toLocaleDateString("es-VE", { year: 'numeric', month: '2-digit', day: '2-digit', }) : item.entry_date}
+//                         onClick={() => setEditable({ id: item.id, element: item.entry_date })}
+//                         onBlur={(event) => {
+//                           setEditable({ id: null, element: null });
+
+//                           if (event.target.value.trim() !== "N/A") {
+//                             const parsedDate = parseUserDate(event.target.value.trim());
+
+//                             if (parsedDate) {
+//                               handleUpdate(parsedDate, item.id, "entry_date")
+//                             } else {
+//                               handleUpdate("Fecha inválida", item.id, "entry_date")
+//                             }
+//                           } else {
+//                             handleUpdate("N/A", item.id, "entry_date")
+//                           }
+
+//                           toast.success("Guardado con exito!");
+//                         }} />
+//                     </Cell>
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell
+//                       editable={editable.id === item.id && editable.element === item.departure_date}
+//                       title={!isNaN(new Date(item.departure_date)) ? new Date(item.departure_date).toLocaleDateString("es-VE", { year: 'numeric', month: '2-digit', day: '2-digit', }) : item.departure_date}
+//                       onClick={() => setEditable({ id: item.id, element: item.departure_date })}
+//                       onBlur={(event) => {
+//                         setEditable({ id: null, element: null });
+
+//                         if (event.target.value.trim() !== "N/A") {
+//                           const parsedDate = parseUserDate(event.target.value.trim());
+
+//                           if (parsedDate) {
+//                             handleUpdate(parsedDate, item.id, "departure_date")
+//                           } else {
+//                             handleUpdate("Fecha inválida", item.id, "departure_date")
+//                           }
+//                         } else {
+//                           handleUpdate("N/A", item.id, "departure_date")
+//                         }
+
+//                         toast.success("Guardado con exito!");
+//                       }} />
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell
+//                       editable={editable.id === item.id && editable.element === item.arrival_date}
+//                       title={!isNaN(new Date(item.arrival_date)) ? new Date(item.arrival_date).toLocaleDateString("es-VE", { year: 'numeric', month: '2-digit', day: '2-digit', }) : item.arrival_date}
+//                       onClick={() => setEditable({ id: item.id, element: item.arrival_date })}
+//                       onBlur={(event) => {
+//                         setEditable({ id: null, element: null });
+
+//                         if (event.target.value.trim() !== "N/A") {
+//                           const parsedDate = parseUserDate(event.target.value.trim());
+
+//                           if (parsedDate) {
+//                             handleUpdate(parsedDate, item.id, "arrival_date")
+//                           } else {
+//                             handleUpdate("Fecha inválida", item.id, "arrival_date")
+//                           }
+//                         } else {
+//                           handleUpdate("N/A", item.id, "arrival_date")
+//                         }
+
+//                         toast.success("Guardado con exito!");
+//                       }} />
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell editable={editable.id === item.id && editable.element === item.status}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "status")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.status })}
+//                       title={item.status}
+//                     />
+//                   </Cell>
+//                   <Cell>
+//                     <EditableCell editable={editable.id === item.id && editable.element === item.observation}
+//                       onBlur={(event) => {
+//                         setEditable(!editable);
+//                         const value = event.target.value.trim() === "" ? "N/A" : event.target.value.trim()
+//                         handleUpdate(value, item.id, "observation")
+//                         toast.success("Guardado con exito!");
+//                       }}
+//                       onClick={() => setEditable({ id: item.id, element: item.observation })}
+//                       title={item.observation}
+//                     />
+//                   </Cell>
+*/
+
+
+
+const xd = [
+  {
+    id: uuid(),
+    equipment_name: "Laptop Dell 11th Gen Core i7-1165G7",
+    equipment_type: "Laptop",
+    serial_number: "H0RHJL3",
+    model: "Latitude 3420",
+    code: "LPD01",
+    entry_date: new Date(2023, 8, 8),
+    observation: "Dell Latitude 14 3420 | 11th Gen Core i7-1165G7 | 8 GB | 256GB SSD | Intel Integrated Graphics | 14' HD Non-Touch | Win 11 Pro",
+    location: "Venezuela",
+    stock: 35
+  },
+  {
+    id: uuid(),
+    equipment_name: "Laptop Dell 11th Gen Core i7-1165G7",
+    equipment_type: "Laptop",
+    serial_number: "AHISUDHIU",
+    model: "Latitude 3420",
+    code: "LPD01",
+    entry_date: new Date(2023, 8, 8),
+    observation: "Dell Latitude 14 3420 | 11th Gen Core i7-1165G7 | 8 GB | 256GB SSD | Intel Integrated Graphics | 14' HD Non-Touch | Win 11 Pro",
+    location: "Venezuela",
+    stock: 35
+  },
+  {
+    id: uuid(),
+    equipment_name: "HP Spectre x360 13",
+    equipment_type: "Laptop",
+    serial_number: "F8T2K7",
+    model: "Spectre x360 13-aw0013dx",
+    code: "HPS01",
+    entry_date: new Date(2023, 7, 15),
+    observation: "HP Spectre x360 13 | 11th Gen Core i5 | 8 GB | 512GB SSD | Intel Iris Xe Graphics | 13.3' FHD Touch | Win 10 Home",
+    location: "United States",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Apple MacBook Pro",
+    equipment_type: "Laptop",
+    serial_number: "M9E5R2",
+    model: "MacBook Pro 2023",
+    code: "APM01",
+    entry_date: new Date(2023, 6, 25),
+    observation: "Apple MacBook Pro | M1 Pro Chip | 16 GB | 1TB SSD | 14' Retina XDR | macOS Monterey",
+    location: "Canada",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Dell XPS 15",
+    equipment_type: "Laptop",
+    serial_number: "G3P6S9",
+    model: "XPS 15 9570",
+    code: "LPD02",
+    entry_date: new Date(2023, 7, 10),
+    observation: "Dell XPS 15 9570 | 9th Gen Core i7-9750H | 16 GB | 512GB SSD | NVIDIA GTX 1650 | 15.6' 4K Touch | Win 10 Pro",
+    location: "Germany",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Samsung Galaxy S21",
+    equipment_type: "Smartphone",
+    serial_number: "S21G6F",
+    model: "Galaxy S21",
+    code: "SMS01",
+    entry_date: new Date(2023, 7, 5),
+    observation: "Samsung Galaxy S21 | Exynos 2100 | 8 GB RAM | 128GB Storage | 6.2' AMOLED Display | Android 11",
+    location: "Spain",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Canon EOS Rebel T7i",
+    equipment_type: "Camera",
+    serial_number: "CANT7I",
+    model: "EOS Rebel T7i",
+    code: "CAM01",
+    entry_date: new Date(2023, 6, 18),
+    observation: "Canon EOS Rebel T7i | 24.2MP APS-C CMOS Sensor | EF-S 18-55mm IS STM Lens | Full HD Video",
+    location: "United Kingdom",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "LG 4K UHD Smart TV",
+    equipment_type: "Television",
+    serial_number: "LG4KTV",
+    model: "LG UJ6300",
+    code: "TV01",
+    entry_date: new Date(2023, 8, 2),
+    observation: "LG 4K UHD Smart TV | 55' Display | WebOS Smart Platform | HDR | Dolby Vision",
+    location: "United States",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Cisco Catalyst 2960X",
+    equipment_type: "Switch",
+    serial_number: "C2960X",
+    model: "Catalyst 2960X-24TS-L",
+    code: "SW01",
+    entry_date: new Date(2023, 7, 12),
+    observation: "Cisco Catalyst 2960X | 24-Port Gigabit Ethernet | 4 SFP Uplinks | LAN Base Image",
+    location: "Data Center",
+    stock: 35
+  },
+  {
+    id: uuid(),
+    equipment_name: "Ubiquiti UniFi Dream Machine",
+    equipment_type: "Router",
+    serial_number: "UDM-PRO",
+    model: "UniFi Dream Machine Pro",
+    code: "ROUT01",
+    entry_date: new Date(2023, 8, 1),
+    observation: "Ubiquiti UniFi Dream Machine | Quad-Core ARM Cortex-A57 CPU | 8 GB RAM | 2 TB HDD | 10G SFP+ WAN",
+    location: "Office",
+    stock: 35
+  },
+  {
+    id: uuid(),
+    equipment_name: "TP-Link Archer C4000",
+    equipment_type: "Router",
+    serial_number: "TPLKC4K",
+    model: "Archer C4000",
+    code: "ROUT02",
+    entry_date: new Date(2023, 6, 28),
+    observation: "TP-Link Archer C4000 | Tri-Band AC4000 | 4 Gigabit Ethernet Ports | 1 USB 3.0 Port",
+    location: "Home Network",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Logitech MX Master 3",
+    equipment_type: "Mouse",
+    serial_number: "LGMX3",
+    model: "MX Master 3",
+    code: "MOUSE01",
+    entry_date: new Date(2023, 7, 20),
+    observation: "Logitech MX Master 3 | Wireless Mouse | Darkfield High-Precision Tracking | USB-C Rechargeable",
+    location: "Office",
+    stock: 35
+
+  },
+  {
+    id: uuid(),
+    equipment_name: "Dell UltraSharp U2719D",
+    equipment_type: "Monitor",
+    serial_number: "DLLU2719D",
+    model: "UltraSharp U2719D",
+    code: "MONITOR01",
+    entry_date: new Date(2023, 8, 5),
+    observation: "Dell UltraSharp U2719D | 27' QHD IPS Display | 2560x1440 Resolution | 60Hz Refresh Rate",
+    location: "Home Office",
+    stock: 35
+  },
+  {
+    id: uuid(),
+    equipment_name: "Corsair K70 RGB MK.2",
+    equipment_type: "Keyboard",
+    serial_number: "CRSK70",
+    model: "K70 RGB MK.2",
+    code: "KEYBOARD01",
+    entry_date: new Date(2023, 6, 15),
+    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
+    location: "Gaming Setup",
+    stock: 23
+  },
+  {
+    id: uuid(),
+    equipment_name: "Corsair K70 RGB MK.2",
+    equipment_type: "Keyboard",
+    serial_number: "CRSK70",
+    model: "K70 RGB MK.2",
+    code: "KEYBOARD01",
+    entry_date: new Date(2023, 6, 15),
+    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
+    location: "Gaming Setup",
+    stock: 100
+  },
+  {
+    id: uuid(),
+    equipment_name: "Corsair K70 RGB MK.2",
+    equipment_type: "Keyboard",
+    serial_number: "CRSK70",
+    model: "K70 RGB MK.2",
+    code: "KEYBOARD01",
+    entry_date: new Date(2023, 6, 15),
+    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
+    location: "Gaming Setup",
+    stock: 13
+  },
+  {
+    id: uuid(),
+    equipment_name: "Corsair K70 RGB MK.2",
+    equipment_type: "Keyboard",
+    serial_number: "CRSK70",
+    model: "K70 RGB MK.2",
+    code: "KEYBOARD01",
+    entry_date: new Date(2023, 6, 15),
+    observation: "Corsair K70 RGB MK.2 | Mechanical Gaming Keyboard | Cherry MX Brown Switches | RGB Backlit",
+    location: "Gaming Setup",
+    stock: 10
+  },
+]
