@@ -197,7 +197,7 @@ const Customers = () => {
 
   return (
     <div className="flex flex-col bg-[#fbfbfb] relative h-full w-full overflow-auto" style={{ contain: "content" }}>
-      <Header title="Clientes" username="Gabriel Maizo" email="maizogabriel@gmail.com" />
+      <Header title="Clientes" />
 
       {showAdd && <FormAdd handleCreate={handleCreate} setShowAdd={setShowAdd} />}
 

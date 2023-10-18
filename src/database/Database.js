@@ -1,3 +1,4 @@
+const { v4: uuid } = require("uuid")
 const mysql = require('mysql2');
 
 class Database {
@@ -7,10 +8,46 @@ class Database {
 
   // get userinfo from Users by Id 
   async getUserInfo(id) {
-    const sql = 'SELECT Email, FullName FROM Users WHERE Id = ?';
+    const sql = 'SELECT ID, Email, FullName, Role FROM Users WHERE Id = ?';
     try {
       const connection = await this.connect();
       const result = await this.query(sql, id);
+      this.disconnect(connection);
+      return result;
+    } catch {
+      throw error;
+    }
+  }
+
+  async deleteUser(id) {
+    const sql = 'DELETE FROM Users WHERE ID = ?';
+    try {
+      const connection = await this.connect();
+      const result = await this.query(sql, id);
+      this.disconnect(connection);
+      return result;
+    } catch {
+      throw error;
+    }
+  }
+
+  async setUserRole(id, role) {
+    const sql = 'UPDATE Users SET Role = ? WHERE ID = ?';
+    try {
+      const connection = await this.connect();
+      const result = await this.query(sql, [role, id]);
+      this.disconnect(connection);
+      return result;
+    } catch {
+      throw error;
+    }
+  }
+
+  async getAllUsers() {
+    const sql = 'SELECT ID, Email, FullName, Role FROM Users';
+    try {
+      const connection = await this.connect();
+      const result = await this.query(sql);
       this.disconnect(connection);
       return result;
     } catch {
@@ -423,7 +460,7 @@ class Database {
         customer_name
       FROM equipment
     `;
-    
+
     try {
       const connection = await this.connect();
       const result = await this.query(sql);
@@ -435,6 +472,7 @@ class Database {
         const key = item.code;
         if (!equipmentSummary[key]) {
           equipmentSummary[key] = {
+            id: uuid(),
             equipment_name: item.equipment_name,
             equipment_type: item.equipment_type,
             model: item.model,
@@ -443,7 +481,7 @@ class Database {
             sold: 0,
           };
         }
-        
+
         equipmentSummary[key].stock++;
         if (item.customer_name) {
           equipmentSummary[key].sold++;

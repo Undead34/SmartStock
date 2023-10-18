@@ -36,9 +36,7 @@ const API = {
     const channelStock = ["smartstock:get:stock", "smartstock:update:stock", "smartstock:post:stock", "smartstock:delete:stock"]
     const channelBuys = ["smartstock:get:buys", "smartstock:update:buys", "smartstock:delete:buys", "smartstock:post:buys"]
     const channelCustomers = ["smartstock:get:customers", "smartstock:update:customers", "smartstock:delete:customers", "smartstock:post:customers"]
-    const channels = ["smartstock:login:token", "smartstock:validate:code", "smartstock:change:password", "smartstock:get:userinfo", "smartstock:summary:equipment", ...channelStock, ...channelBuys, ...channelCustomers];
-
-    
+    const channels = ["smartstock:login:token", "smartstock:validate:code", "smartstock:change:password", "smartstock:send:email", "smartstock:get:userinfo", "smartstock:set:role", "smartstock:delete:user", "smartstock:summary:equipment", "smartstock:get:users", ...channelStock, ...channelBuys, ...channelCustomers];
 
     // Si el canal es válido, invocamos el mensaje al proceso principal y esperamos la respuesta
     if (typeof channel === "string" && channels.includes(channel)) {

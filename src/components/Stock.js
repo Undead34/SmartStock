@@ -1,18 +1,19 @@
-import CreatableSelect from "react-select/creatable"
-import React, { useState, useEffect } from "react"
-import { v4 as uuid } from "uuid"
-import Select from "react-select"
-import { toast } from "sonner"
+import CreatableSelect from "react-select/creatable";
+import React, { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
+import Select from "react-select";
+import { toast } from "sonner";
 
-import { filterData, generateProductCode, parseUserDate } from "../utils"
-import { Table } from "../components/Tables"
-import Header from "./Header"
+import { filterData, generateProductCode, parseUserDate } from "../utils";
+import { Table } from "../components/Tables";
+import Header from "./Header";
 
 // Icons
-import { VscAdd, VscTrash } from "react-icons/vsc"
-import { BsSearch } from "react-icons/bs"
-import { LuFilter } from "react-icons/lu"
-import { ImLoop2 } from "react-icons/im"
+import { VscAdd, VscTrash } from "react-icons/vsc";
+import { BsSearch } from "react-icons/bs";
+import { LuFilter } from "react-icons/lu";
+import { ImLoop2 } from "react-icons/im";
+import { PiCopy } from "react-icons/pi";
 
 function FormAdd({ data, setShowAdd, handleCreate }) {
   const [custom, setCustom] = useState({ value: "", label: "" });
@@ -43,26 +44,27 @@ function FormAdd({ data, setShowAdd, handleCreate }) {
         entry_date: parseUserDate(event.target.entry_date.value),
         observation: event.target.observation.value.trim(),
         location: event.target.location.value.trim(),
-      }
+        assign_date: null,
+      };
 
       handleCreate(item);
       setShowAdd(false);
     }
   }
 
-
-  const tagOptions = Array.from(new Set(data.map(item => item.code)))
-    .map(value => ({
+  const tagOptions = Array.from(new Set(data.map((item) => item.code))).map(
+    (value) => ({
       value: value,
       label: value.charAt(0).toUpperCase() + value.slice(1),
-    }));
+    })
+  );
 
   const select = {
     container: () => ({
       display: "flex",
       position: "relative",
       flex: "1",
-      width: "100%"
+      width: "100%",
     }),
     control: () => ({
       display: "flex",
@@ -70,41 +72,81 @@ function FormAdd({ data, setShowAdd, handleCreate }) {
       fontSize: "0.875rem",
       lineHeight: "1.25rem",
     }),
-  }
+  };
 
   function handleCreateTag(inputValue) {
-    setCustom({ value: String(inputValue).toUpperCase(), label: String(inputValue).toUpperCase() })
+    setCustom({
+      value: String(inputValue).toUpperCase(),
+      label: String(inputValue).toUpperCase(),
+    });
   }
 
   return (
     <div className="absolute flex items-center justify-center w-full h-full left-0 right-0 bg-black bg-opacity-30 z-50">
       <div className="bg-white min-w-[40%] flex shadow-md rounded-sm p-4">
-        <form className="text-white flex flex-col flex-1 gap-2" onSubmit={handleSubmit}>
+        <form
+          className="text-white flex flex-col flex-1 gap-2"
+          onSubmit={handleSubmit}
+        >
           <div className="flex w-full items-center pb-2">
-            <h1 className="text-2xl text-[#1c7cb4] font-semibold">Agregar equipo</h1>
+            <h1 className="text-2xl text-[#1c7cb4] font-semibold">
+              Agregar equipo
+            </h1>
           </div>
           <div className="flex flex-col gap-2 mb-4 text-[#1c7cb4]">
             <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-              <input required className="bg-transparent outline-none flex-1" name="equipment_name" type="text" placeholder="Nombre del equipo" />
+              <input
+                required
+                className="bg-transparent outline-none flex-1"
+                name="equipment_name"
+                type="text"
+                placeholder="Nombre del equipo"
+              />
             </div>
 
             <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-              <input required className="bg-transparent outline-none flex-1" name="equipment_type" type="text" placeholder="Tipo de equipo" />
+              <input
+                required
+                className="bg-transparent outline-none flex-1"
+                name="equipment_type"
+                type="text"
+                placeholder="Tipo de equipo"
+              />
             </div>
 
             <div className="flex gap-2">
               <div className="flex-1 flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                <input required className="bg-transparent outline-none flex-1" name="serial_number" type="text" placeholder="Número de serie" />
+                <input
+                  required
+                  className="bg-transparent outline-none flex-1"
+                  name="serial_number"
+                  type="text"
+                  placeholder="Número de serie"
+                />
               </div>
 
               <div className="flex-1 flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                <input required className="bg-transparent outline-none flex-1" name="model" type="text" placeholder="Modelo" />
+                <input
+                  required
+                  className="bg-transparent outline-none flex-1"
+                  name="model"
+                  type="text"
+                  placeholder="Modelo"
+                />
               </div>
             </div>
 
             <div className="flex gap-2">
               <div className="flex-1 flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-                <ImLoop2 onClick={() => { setCustom({ value: generateProductCode(), label: generateProductCode() }); }} className="cursor-pointer" />
+                <ImLoop2
+                  onClick={() => {
+                    setCustom({
+                      value: generateProductCode(),
+                      label: generateProductCode(),
+                    });
+                  }}
+                  className="cursor-pointer"
+                />
                 <CreatableSelect
                   name="code"
                   styles={select}
@@ -117,7 +159,16 @@ function FormAdd({ data, setShowAdd, handleCreate }) {
                   formatCreateLabel={(inputValue) => `Crear "${inputValue}"`}
                 />
 
-                {errors.code && <span onClick={() => { setErrors({ ...errors, code: "" }); }} className="text-red-500 whitespace-nowrap">{errors.code}</span>}
+                {errors.code && (
+                  <span
+                    onClick={() => {
+                      setErrors({ ...errors, code: "" });
+                    }}
+                    className="text-red-500 whitespace-nowrap"
+                  >
+                    {errors.code}
+                  </span>
+                )}
               </div>
 
               <div className="flex-1 flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
@@ -129,21 +180,40 @@ function FormAdd({ data, setShowAdd, handleCreate }) {
                   placeholder="Fecha de entrada"
                   onBlur={handleDateChange}
                 />
-                {errors.entry_date && <span className="text-red-500 whitespace-nowrap">{errors.entry_date}</span>}
+                {errors.entry_date && (
+                  <span className="text-red-500 whitespace-nowrap">
+                    {errors.entry_date}
+                  </span>
+                )}
               </div>
             </div>
 
             <div className="flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-              <input required className="bg-transparent outline-none flex-1" name="location" type="text" placeholder="Ubicación" />
+              <input
+                required
+                className="bg-transparent outline-none flex-1"
+                name="location"
+                type="text"
+                placeholder="Ubicación"
+              />
             </div>
 
             <div className="flex-1 flex flex-row-reverse h-10 gap-2 rounded-md p-4 bg-white justify-start items-center border border-[#f9661111]">
-              <textarea required className="bg-transparent outline-none flex-1 max-h-16" name="observation" type="text" placeholder="Observación" />
+              <textarea
+                required
+                className="bg-transparent outline-none flex-1 max-h-16"
+                name="observation"
+                type="text"
+                placeholder="Observación"
+              />
             </div>
           </div>
 
           <div className="flex gap-2 items-center mb-2 justify-end">
-            <button onClick={() => setShowAdd(false)} className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-4 py-2 text-white bg-red-500 hover:bg-red-600">
+            <button
+              onClick={() => setShowAdd(false)}
+              className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-4 py-2 text-white bg-red-500 hover:bg-red-600"
+            >
               Cancelar
             </button>
             <button className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md pl-3 pr-4 py-2 text-white bg-green-500 hover:bg-green-600">
@@ -157,14 +227,22 @@ function FormAdd({ data, setShowAdd, handleCreate }) {
   );
 }
 
-function Actions({ data, handleFilter, handleCreate, handleDelete }) {
+function Actions({
+  data,
+  handleFilter,
+  handleCreate,
+  handleDelete,
+  handleDuplicate,
+  isAdmin
+}) {
+
   const styles = {
     select: {
       container: () => ({
         display: "flex",
         position: "relative",
         flex: "1",
-        width: "100%"
+        width: "100%",
       }),
       control: () => ({
         display: "flex",
@@ -172,55 +250,102 @@ function Actions({ data, handleFilter, handleCreate, handleDelete }) {
         fontSize: "0.875rem",
         lineHeight: "1.25rem",
       }),
-    }
-  }
+    },
+  };
 
-  const tagOptions = Array.from(new Set(data.map(item => item.equipment_type.toLowerCase())))
-    .map(value => ({
-      value: value,
-      label: value.charAt(0).toUpperCase() + value.slice(1),
-    }));
+  const tagOptions = Array.from(
+    new Set(data.map((item) => item.equipment_type.toLowerCase()))
+  ).map((value) => ({
+    value: value,
+    label: value.charAt(0).toUpperCase() + value.slice(1),
+  }));
+
+  tagOptions.push({ value: "assigned_equipment", label: "Equipos asignados" });
+  tagOptions.push({
+    value: "unassigned_equipment",
+    label: "Equipos no asignados",
+  });
 
   return (
     <div className="bg-white shadow-sm flex p-2 rounded-md gap-2 text-gray-700 z-20">
       <div className="relative gap-2 justify-center items-center flex text-slate-400 min-w-[280px] p-2 rounded-md border border-slate-400">
-        <input onInput={(event) => handleFilter(filterData(data, event.target.value.trim()))}
-          className="flex-1 text-sm outline-none" placeholder="Búsqueda por nombre o código" />
+        <input
+          onInput={(event) => {
+            handleFilter(filterData(data, event.target.value.trim()));
+          }}
+          className="flex-1 text-sm outline-none"
+          placeholder="Búsqueda por nombre o código"
+        />
         <BsSearch className="text-slate-400" />
       </div>
 
-      <div className="relative min-w-[200px] flex h-auto font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-2 hover:bg-gray-50">
+      <div className="relative min-w-[240px] flex h-auto font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-2 hover:bg-gray-50">
         <LuFilter />
         <Select
           className="text-sm w-full"
           styles={styles.select}
           options={tagOptions}
-          onChange={(tags) => handleFilter(filterData(data, tags.map((tag) => tag.value.toLowerCase())))}
+          onChange={(tags) => {
+            const filterTags = tags.map((tag) => tag.value.toLowerCase());
+            const filteredData = filterData(data, filterTags);
+
+            if (filteredData.length === 0 && filterTags.length > 0)
+              toast.message("No se encontraron coincidencias");
+
+            handleFilter(filteredData);
+          }}
           isMulti
-          placeholder="Filtrar por..." />
+          placeholder="Filtrar por..."
+        />
       </div>
 
       <div className="flex ml-auto gap-2 justify-center items-center">
-        <div onClick={handleCreate} className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-3 py-2 text-white bg-green-500 hover:bg-green-600">
+        <div
+          onClick={handleDuplicate}
+          className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-3 py-2 text-white bg-green-500 hover:bg-green-600"
+        >
+          <PiCopy className="text-lg" />
+          Duplicar
+        </div>
+        <div
+          onClick={handleCreate}
+          className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-3 py-2 text-white bg-green-500 hover:bg-green-600"
+        >
           <VscAdd className="text-lg" />
           Producto
         </div>
-        <div onClick={handleDelete} className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-3 py-2 text-white bg-red-500 hover:bg-red-600">
-          <VscTrash className="text-lg" />
-          Borrar
-        </div>
+
+        {isAdmin && (
+          <div onClick={handleDelete} className="flex font-semibold gap-2 justify-center items-center cursor-pointer rounded-md px-3 py-2 text-white bg-red-500 hover:bg-red-600">
+            <VscTrash className="text-lg" />
+            Borrar
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 function Stock() {
   const [selected, setSelected] = useState({ id: null, ids: [] });
   const [filteredData, setFilteredData] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
+  const [reload, setReload] = useState(false);
   let [data, setData] = useState([]);
+  const [showAdmin, setAdmin] = useState(false);
 
-  data = data.filter((item) => item.customer_name === null)
+  useEffect(() => {
+    const id = localStorage.getItem("ID");
+
+    if (id) {
+      const response = window.SmartStock.invoke("smartstock:get:userinfo", { id });
+      response.then((userInfo) => {
+        if (userInfo.Role === "admin") {
+          setAdmin(true)
+        }
+      })
+    }
+  })
 
   const isFiltered = Boolean(filteredData.length);
 
@@ -239,13 +364,18 @@ function Stock() {
     getData();
   }, []);
 
+  useEffect(() => {
+    getData();
+  }, [reload]);
 
   function onSelectChange(action, state) {
     setSelected(state);
   }
 
   async function handleCreate(item) {
-    const updated = await window.SmartStock.invoke("smartstock:post:stock", { item });
+    const updated = await window.SmartStock.invoke("smartstock:post:stock", {
+      item,
+    });
 
     if (updated) {
       getData();
@@ -256,14 +386,17 @@ function Stock() {
   }
 
   async function handleUpdate(value, id, key) {
-    let item = data.filter((item) => (item.id === id))[0]
+    let item = data.filter((item) => item.id === id)[0];
 
     if (item) {
       item = { ...item };
 
       if (item[key] !== value) {
         item[key] = value;
-        const updated = await window.SmartStock.invoke("smartstock:update:stock", { item });
+        const updated = await window.SmartStock.invoke(
+          "smartstock:update:stock",
+          { item }
+        );
         if (updated) {
           toast.success("¡Guardado con exito!");
           getData();
@@ -276,14 +409,21 @@ function Stock() {
 
   async function handleDelete() {
     if (selected.ids.length > 0) {
-      const deleted = await window.SmartStock.invoke("smartstock:delete:stock", { ids: selected.ids });
+      const deleted = await window.SmartStock.invoke(
+        "smartstock:delete:stock",
+        { ids: selected.ids }
+      );
 
       if (deleted) {
         getData();
         setSelected({ id: null, ids: [] });
-        selected.ids.length === 1 ? toast.success("¡Elemento eliminado con éxito!") : toast.success("¡Elementos eliminados con éxito!");
+        selected.ids.length === 1
+          ? toast.success("¡Elemento eliminado con éxito!")
+          : toast.success("¡Elementos eliminados con éxito!");
       } else {
-        selected.ids.length === 1 ? toast.success("Error al borrar el elemento :(") : toast.success("Error al borrar los elementos :(");
+        selected.ids.length === 1
+          ? toast.success("Error al borrar el elemento :(")
+          : toast.success("Error al borrar los elementos :(");
       }
     }
   }
@@ -293,35 +433,149 @@ function Stock() {
   }
 
   const columns = [
-    { key: "equipment_name", title: "Nombre del equipo", resize: true, type: "text", editable: true, },
-    { key: "equipment_type", title: "Tipo de equipo", resize: true, type: "text", editable: true, },
-    { key: "serial_number", title: "Número de serie", resize: true, type: "text", editable: true, },
-    { key: "model", title: "Modelo", resize: true, type: "text", editable: true, },
-    { key: "entry_date", title: "Fecha de entrada", resize: true, type: "date", editable: true, },
-    { key: "code", title: "Código", resize: true, type: "text", editable: true, },
-    { key: "observation", title: "Descripción", resize: false, type: "text", editable: true, },
+    {
+      key: "equipment_name",
+      title: "Nombre del equipo",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "equipment_type",
+      title: "Tipo de equipo",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "serial_number",
+      title: "Número de serie",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "model",
+      title: "Modelo",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "entry_date",
+      title: "Fecha de entrada",
+      resize: true,
+      type: "date",
+      editable: showAdmin,
+    },
+    {
+      key: "code",
+      title: "Código",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "location",
+      title: "Ubicación",
+      resize: true,
+      type: "text",
+      editable: showAdmin,
+    },
+    {
+      key: "status",
+      title: "Status",
+      resize: true,
+      type: "text",
+      custom: true,
+      children: (item) => (
+        <div
+          className={`
+          text-white text-center p-1
+          ${Boolean(item.customer_name) ? "bg-green-500" : "bg-red-500"}`}
+        >
+          {Boolean(item.customer_name) ? "Asignado" : "No asignado"}
+        </div>
+      ),
+    },
+    {
+      key: "observation",
+      title: "Descripción",
+      resize: false,
+      type: "text",
+      editable: showAdmin,
+      textarea: true,
+    },
   ];
 
-  const customGrid = "--data-table-library_grid-template-columns: auto minmax(180px, 1fr) repeat(6, minmax(0, 1fr)); max-height: 406px;";
+  async function handleDuplicate() {
+    if (selected.ids[0]) {
+      const item = data.filter((item) => item.id === selected.ids[0])[0];
+      item.id = uuid();
+      item.equipment_name = `${item.equipment_name} - copia`;
+      item.serial_number = "N/A";
+      item.entry_date = new Date();
+      item.assign_date = null;
+      item.customer_name = null;
+      item.delivery_note = null;
 
-  console.log();
+      const updated = await window.SmartStock.invoke("smartstock:post:stock", {
+        item,
+      });
+
+      if (updated) {
+        toast.success("¡Duplicado con éxito!");
+      } else {
+        toast.error("Error al duplicar :(");
+      }
+
+      await getData();
+      setReload(!reload);
+    }
+  }
+
+  const customGrid =
+    "--data-table-library_grid-template-columns: auto minmax(180px, 1fr) repeat(8, minmax(0, 1fr)); max-height: 406px;";
 
   return (
-    <div className="flex flex-col bg-[#fbfbfb] relative h-full w-full overflow-auto" style={{ contain: "content" }}>
+    <div
+      className="flex flex-col bg-[#fbfbfb] relative h-full w-full overflow-auto"
+      style={{ contain: "content" }}
+    >
       <Header title="Stock" />
       <div className="flex flex-col gap-4 px-10 mb-10">
-        <Actions data={data} handleFilter={handleFilter} handleCreate={() => setShowAdd(!showAdd)} handleDelete={handleDelete} />
+        <Actions
+          data={data}
+          handleFilter={handleFilter}
+          handleCreate={() => setShowAdd(!showAdd)}
+          handleDelete={handleDelete}
+          handleDuplicate={handleDuplicate}
+          isAdmin={showAdmin}
+        />
       </div>
 
-      {showAdd && <FormAdd data={data} setShowAdd={setShowAdd} handleCreate={handleCreate} />}
+      {showAdd && (
+        <FormAdd
+          data={data}
+          setShowAdd={setShowAdd}
+          handleCreate={handleCreate}
+        />
+      )}
 
       <div className="flex flex-col gap-4 px-10 mb-10">
         <div className="bg-white p-2 shadow-sm rounded-md flex-1 h-11 w-full">
-          <Table columns={columns} values={isFiltered ? filteredData : data} customGrid={customGrid} handleUpdate={handleUpdate} state={selected} onSelectChange={onSelectChange} />
+          <Table
+            columns={columns}
+            values={isFiltered ? filteredData : data}
+            customGrid={customGrid}
+            handleUpdate={handleUpdate}
+            state={selected}
+            onSelectChange={onSelectChange}
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Stock;

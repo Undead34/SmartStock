@@ -13,7 +13,7 @@ import { ImLoop2 } from "react-icons/im"
 
 
 function FormAdd({ item, setShowAdd, handleAprobe }) {
-  const [custom, setCustom] = useState({ value: "", label: "" });
+  const [custom, setCustom] = useState({ label: item.code, value: item.code });
   const [errors, setErrors] = useState({});
   const [data, setData] = useState([]);
 
@@ -193,19 +193,13 @@ function ApprovePurchases({ data, getData2, setShowAdd }) {
   }
 
   const columns = [
-    { key: "customer_name", title: "Nombre del proveedor", resize: true, type: "text", editable: false, },
-    { key: "equipment_name", title: "Nombre del equipo", resize: true, type: "text", editable: false, },
-    { key: "model", title: "Modelo", resize: true, type: "text", editable: false, },
-    { key: "amount", title: "Cantidad", resize: true, type: "number", editable: false, },
-    { key: "entry_date", title: "Fecha de compra", resize: true, type: "date", editable: false, },
-    { key: "arrival_date", title: "Fecha de llegada", resize: true, type: "date", editable: false, },
-    { key: "status", title: "Estado", resize: true, type: "text", editable: false, },
-    { key: "observation", title: "Observación", resize: true, type: "text", editable: false, },
-  ];
-
-  const customGrid = "--data-table-library_grid-template-columns: repeat(3, minmax(0, 1fr)) repeat(1, minmax(0, min-content)) repeat(4, minmax(0, 1fr)) auto; max-height: 406px;";
-
-  const columnsCustom = [
+    { key: "supplier_name", title: "Nombre del proveedor", resize: true, type: "text" },
+    { key: "equipment_name", title: "Nombre del equipo", resize: true, type: "text" },
+    { key: "code", title: "Código", resize: true, type: "text", editable: true },
+    { key: "entry_date", title: "Fecha de compra", resize: true, type: "date" },
+    { key: "arrival_date", title: "Fecha de llegada", resize: true, type: "date" },
+    { key: "observation", title: "Observación", resize: true, type: "text" },
+    { key: "status", title: "Estado", resize: true, type: "text" },
     {
       children: (item) => {
         return (
@@ -217,9 +211,11 @@ function ApprovePurchases({ data, getData2, setShowAdd }) {
             </div>
           </>
         )
-      }, title: "Aprobar", key: uuid(), resize: false,
+      }, title: "Aprobar", key: uuid(), resize: false, custom: true
     },
-  ]
+  ];
+
+  const customGrid = "--data-table-library_grid-template-columns: repeat(7, minmax(0, 1fr)) auto; max-height: 406px;";
 
   return (
     <div className="flex flex-col gap-4 px-10">
@@ -227,7 +223,7 @@ function ApprovePurchases({ data, getData2, setShowAdd }) {
         <h1 className="text-3xl text-[#1c7cb4] font-semibold">Aprobar compras</h1>
       </div>
       <div className="bg-white p-2 shadow-sm rounded-md flex-1 h-11 w-full">
-        <Table columns={columns} values={data} customGrid={customGrid} columnsCustom={columnsCustom} />
+        <Table columns={columns} values={data} customGrid={customGrid} />
       </div>
     </div>
   )
@@ -271,12 +267,11 @@ const Control = () => {
 
   const controlColumns = [
     { key: "equipment_type", title: "Tipo de equipo", resize: true, type: "text" },
+    { key: "model", title: "Modelo", resize: true, type: "text" },
+    { key: "code", title: "Código", resize: true, type: "text", editable: true },
     { key: "stock", title: "Cantidad", resize: true, type: "number" },
     { key: "sold", title: "Asignado", resize: true, type: "number" },
-    { key: "observation", title: "Observación", resize: false, type: "text" },
   ];
-
-
 
   const [data2, setData2] = useState([]);
 
@@ -292,7 +287,7 @@ const Control = () => {
 
   return (
     <div className="flex flex-col bg-[#fbfbfb] relative h-full w-full overflow-auto pb-10" style={{ contain: "content" }}>
-      <Header title="Control y seguimiento" username="Gabriel Maizo" email="maizogabriel@gmail.com" />
+      <Header title="Control y seguimiento"  />
 
       {showAdd && <FormAdd getData2={getData2} item={showAdd} handleAprobe={handleAprobe} setShowAdd={(value) => {
         setShowAdd(value);

@@ -41,7 +41,7 @@ function Home() {
       } else {
         setUnmounting("login");
       }
-    }, 1000);
+    }, 5000);
 
     return () => {
       clearTimeout(id);
